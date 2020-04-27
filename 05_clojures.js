@@ -25,3 +25,12 @@ function operationFirst(num1) {
 
 let plusValue = operationFirst(12);
 plusValue(3);
+
+
+console.log(plusValue)
+console.log(typeof plusValue)
+
+plusValue(7);
+plusValue(10);
+plusValue(10);
+plusValue(10);

@@ -25,7 +25,12 @@ console.log('empty func to Bool constructor', Boolean(function(){} ))
 console.log('empty object to Bool constructor', Boolean({}))
 
 
-
+console.log(typeof {});
+console.log(typeof []);
+console.log(typeof function() {});
+console.log(Boolean({}))
+console.log(Boolean([]))
+console.log(Boolean(function(){}))
 
 
 

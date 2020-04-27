@@ -21,4 +21,13 @@ for(let i = 1; i <= 25; i++) {
         console.log(i)
     }
 }
+console.log('=================>')
+console.log(typeof {});
+console.log(typeof []);
+console.log(typeof function() {});
+console.log(Boolean({}))
+console.log(Boolean([]))
+console.log(Boolean(function(){}))
 
+
+console.log()
