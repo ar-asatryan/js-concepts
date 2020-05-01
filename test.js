@@ -22,8 +22,6 @@
 // console.log('arr1 === arr2 >>',arr1 === arr3);
 
 
-
-//
 // function display1(cb2,cb3){
 //     setTimeout(() => {
 //         console.log(1)
