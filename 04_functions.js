@@ -37,3 +37,4 @@ function display(cb1,cb2,cb3){
 };
 
 display(display1,display2,display3)
+
