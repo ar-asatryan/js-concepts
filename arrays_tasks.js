@@ -43,3 +43,7 @@ const getMin = function(arr) {
 };
 
 console.log('min value is:', getMin(arr));
+
+//
+
+
