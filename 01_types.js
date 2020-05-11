@@ -33,12 +33,7 @@ console.log(Boolean([]))
 console.log(Boolean(function(){}))
 
 
-
-
-
-
-
-
+console.log("")
 
 
 
