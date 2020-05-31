@@ -1,0 +1,23 @@
+{
+  "name": "js-concepts",
+  "version": "1.0.0",
+  "description": "JavaScript practising ",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ar-asatryan/js-concepts.git"
+  },
+  "author": "Ararat Asatryan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ar-asatryan/js-concepts/issues"
+  },
+  "homepage": "https://github.com/ar-asatryan/js-concepts#readme",
+  "dependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
