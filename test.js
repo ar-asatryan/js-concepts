@@ -156,3 +156,44 @@ Object.prototype.sayHello = function() {
 
 const lucas =  Object.create(employee);
 lucas.sayHello()
+
+/////////////////////////////////////////////////////////////////////////////
+const o1 = {
+    num1 : 1
+};
+const o2 = {
+    num2: 2
+};
+
+const y = ()=>{
+    const o = ()=>{
+        return this.num2
+    };
+    return this.num1 + o();
+};
+
+const result = y();
+console.log(result);
+
+/////////////////////////////////////////////////////////////////////////////
+const o1 = {
+    num1: 1
+};
+const o2 = {
+    num2: 2
+};
+
+const y = function () {
+    return (() => {
+        const o = function () {
+            return (() => {
+                return this.num2
+            })()
+        }.bind(o2);
+        return this.num1 + o();
+    })()
+}.bind(o1);
+
+const result = y();
+console.log(result);
+/////////////////////////////////////////////////////////////////////////////
