@@ -35,3 +35,26 @@ const newArray =  arr.getArrayByElementTypes("boolean");
 console.log(newArray);
 
 
+const a = ["HH","BB","KK","OO","LL"];
+// a.insertArrayByNumber(["Levon","Ararat"],2);
+
+//Ստանում ենք
+//    ["HH","BB","Levon","KK","OO","Ararat","LL"]
+
+
+
+
+const arr = ["Ararat","Levon",25,true,false];
+
+arr.getObjectWithKeys(["name","name1",null,"name2"]);
+
+// Արդյունքը պիտի լինի
+// {
+//     name : "Ararat",
+//     name1 : "Levon",
+//     name2 : true
+// }
+
+
+
+
