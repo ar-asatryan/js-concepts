@@ -1,14 +1,45 @@
 //functions exploration:
 
-function addElems(num1, num2, count) {
+// function addElems(num1, num2, count) {
+//
+//     return count/num1+num2;
+// }
+//
+// addElems(2,4,43)
+//
+// console.log(addElems);
 
-    return count/num1+num2;
-}
 
-addElems(2,4,43)
+/// Here what there is given>>>
+// function display1(){
+//     setTimeout(() => {
+//         console.log(1)
+//     }, 4000);
+// };
+//
+// function display2(){
+//     setTimeout(() => {
+//         console.log(2)
+//     }, 3000);
+// };
+//
+// function display3(){
+//     setTimeout(() => {
+//         console.log(3)
+//     }, 1000);
+// };
+//
+// function display(){
+//     display1();
+//     display2();
+//     display3();
+// };
+//
+// display()
+///need to print 1 , 2 , 3, one after anther !
 
-console.log(addElems);
 
+//solution
 function display1(cb2,cb3){
     setTimeout(() => {
         console.log(1)
@@ -36,5 +67,8 @@ function display(cb1,cb2,cb3){
     // display3();
 };
 
-display(display1,display2,display3)
+display(display1,display2,display3);
+
+//////////////////////////////////-------------------------------------->
+
 
