@@ -86,33 +86,50 @@ const arr1 = ["HH","BB","KK","OO","LL"];
 //Ստանում ենք
 // let finArr  =  ["HH","BB","Levon","KK","OO","Ararat","LL"];
 
-Array.prototype.insertArrayByNumber = function(arrX,step) {
-    let i,j,tempArray;
+Array.prototype.insertArrayByStep = function(arrX,step) {
+    let i,j,k,tempArray;
     let finArr = [];
-    //let sum = [];
-    for (i=0,j=arr1.length; i<j; i+=step) {
-    tempArray = arr1.slice(i, i + step);
-        console.log(tempArray);
-        //for(let k = 0; k <= arr.length; k++) {
-            tempArray.push(arrX[i]);
-            finArr = finArr.push();
-       // }
+
+    for (i = 0, k = 0; i <= j , k <= arrX.length ; i+=step, k++) {
+        tempArray = arr1.slice(i, i + step);
+                 console.log(tempArray);
+            for(let p = 0; p <= tempArray.length - 1; p++) {
+                finArr.push(tempArray[p]);
+            }
+            finArr.push(arrX[k]);
     }
-    return tempArray;
+    return finArr;
 };
 
-let res = arr1.insertArrayByNumber(["Levon","Ararat"],2);
+let res = arr1.insertArrayByStep(["Levon","Ararat"],2);
 console.log('merged array>>>', res);
+
+Array.prototype.insertArrayByStep = function(arrX,step){
+    const returnedArray = [];
+    for(let i = 0, j =0; i<this.length && j < arrX.length; i++){
+        returnedArray.push(this[i]);
+        if((i+1)%step===0 && i!==0){
+            returnedArray.push(arrX[j]);
+            j++;
+        }
+    };
+    return returnedArray
+};
+
+
 // 7․-----------------------------------------------------------------------------
 //
 
-const arr2 = ["Ararat","Levon",25,true,false];
+const arr2 = ["Ararat", "Levon", 25, true, false];
 
 //arr2.getObjectWithKeys(["name","name1",null,"name2"]);
 
 // Արդյունքը պիտի լինի
 // {
-//     name : "Ararat",
+//     name0 : "Ararat",
 //     name1 : "Levon",
 //     name2 : true
 // }
+
+
+
