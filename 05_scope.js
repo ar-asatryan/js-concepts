@@ -48,12 +48,7 @@
 //     })(10)
 //
 //
-// for(var a = 0;a<5;a++){
-//     setTimeout(()=>{
-//         console.log(a)
-//     })
-// }
-//
+
 //
 // var a = 0;
 //
@@ -85,6 +80,12 @@
 //         })(5)
 //     })
 // }
+
+for(let a = 0;a <= 5;a++){
+    setTimeout(()=>{
+        console.log(a)
+    })
+}
 
 
 for(var a = 0; a<5; a++){
