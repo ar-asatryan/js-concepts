@@ -1,16 +1,16 @@
 
-console.log(this)
-
-let user = {
-    name: "John",
-    age: 30,
-
-    sayHi() {
-        // "this" is the "current object"
-        console.log(this);
-    }
-
-};
+// console.log(this)
+//
+// let user = {
+//     name: "John",
+//     age: 30,
+//
+//     sayHi() {
+//         // "this" is the "current object"
+//         console.log(this);
+//     }
+//
+// };
 
 //user.sayHi();
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -34,20 +34,44 @@ let user = {
 //     name2 : true
 // }
 
-const arr = ["Ararat", "Levon", 25, true, false];
-Array.prototype.getObjectWithKeys = function(arrKeys){
-        const obj = {};
-        for(let i = 0; i <= this.length; i++) {
-            let key = arrKeys[i];
-            if(key == null){
-                continue;
+// const arr = ["Ararat", "Levon", 25, true, false];
+// Array.prototype.getObjectWithKeys = function(arrKeys){
+//         const obj = {};
+//         for(let i = 0; i <= this.length; i++) {
+//             let key = arrKeys[i];
+//             if(key == null){
+//                 continue;
+//             }
+//             obj[key] = this[i];
+//         }
+//     return obj;
+// };
+//
+// const finArr = arr.getObjectWithKeys(["name1","name2",null,"name3"]);
+// console.log(finArr)
+
+//
+function checkIsAlmostIncreasingSequence(array) {
+    function checkIsArrayIncreased(array,index){
+        for (let i = 0; i < array.length; i++) {
+            if(i === index){
+                continue
             }
-            obj[key] = this[i];
+            else if(array[i] > array[i + 1]){
+                return false
+            }
+        };
+        return true
+    };
+    for(let i = 0; i <array.length; i++){
+        if(checkIsArrayIncreased(array,i)){
+            return true
         }
-    return obj;
+    };
+    return false
 };
 
-const finArr = arr.getObjectWithKeys(["name1","name2",null,"name3"]);
-console.log(finArr)
+
+console.log(checkIsAlmostIncreasingSequence([1, 3, 2]))
 
 

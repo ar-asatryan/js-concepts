@@ -117,7 +117,7 @@ Array.prototype.insertArrayByStep = function(arrX,step){
 // 7․-----------------------------------------------------------------------------
 // ToDo:
 
-const arr2 = ["Ararat", "Levon", 25, true, false];
+// const arr2 = ["Ararat", "Levon", 25, true, false];
 
 //arr2.getObjectWithKeys(["name","name1",null,"name2"]);
 
@@ -128,6 +128,20 @@ const arr2 = ["Ararat", "Levon", 25, true, false];
 //     name2 : true
 // }
 
+Array.prototype.getObjectWithKeys = function(arrKeys){
+    const obj = {};
+    for(let i = 0; i <= this.length; i++) {
+        let key = arrKeys[i];
+        if(key == null){
+            continue;
+        }
+        obj[key] = this[i];
+    }
+    return obj;
+};
+
+const finArr = arr.getObjectWithKeys(["name1","name2",null,"name3"]);
+console.log(finArr)
 
 
 //////////////////////////////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -162,19 +162,7 @@
 // asyncFuncton(consoleData)
 
 
-// function mySetTimeout(cb, time) {
-//     let timerId;
-//     let gg = "Hello11";
-//     timerId = setInterval(() => {
-//         cb();
-//         clearInterval(timerId);
-//         console.log(gg);
-//     }, time);
-// };
 
-// mySetTimeout(() => {
-//     console.log("Hello")
-// }, 5000);
 
 // let a;
 
@@ -276,6 +264,18 @@
 //     console.log("LLL")
 // })
 
+function mySetTimeout(cb, time) {
+    let timerId;
+    timerId = setInterval(() => {
+        cb();
+        clearInterval(timerId);
+    }, time);
+};
+
+mySetTimeout(() => {
+    console.log("Hello setInterval...")
+}, 5000);
+
 function mySetTimeout(cb,time){
     const pr = new Promise((res)=>{
         setTimeout(() => {
@@ -289,5 +289,5 @@ function mySetTimeout(cb,time){
 };
 
 mySetTimeout(()=>{
-    console.log("Hello")
+    console.log("Hello Promise...")
 },5000);
