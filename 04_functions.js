@@ -10,33 +10,42 @@
 // console.log(addElems);
 
 
-/// Here what there is given>>>
-// function display1(){
-//     setTimeout(() => {
-//         console.log(1)
-//     }, 4000);
-// };
-//
-// function display2(){
-//     setTimeout(() => {
-//         console.log(2)
-//     }, 3000);
-// };
-//
-// function display3(){
-//     setTimeout(() => {
-//         console.log(3)
-//     }, 1000);
-// };
-//
-// function display(){
-//     display1();
-//     display2();
-//     display3();
-// };
-//
-// display()
-///need to print 1 , 2 , 3, one after anther !
+// Here what there is given>>>
+function display1(){
+    setTimeout(() => {
+        console.log(1)
+    }, 4000);
+};
+
+function display2(){
+    setTimeout(() => {
+        console.log(2)
+    }, 3000);
+};
+
+function display3(){
+    setTimeout(() => {
+        console.log(3)
+    }, 1000);
+};
+
+function display(){
+    display1();
+    display2();
+    display3();
+};
+
+display()
+//ToDo: need to print 1 , 2 , 3, one after another !
+
+let getMax = function(arr) {
+    let max = arr[0];
+    for(let i = 0; i <= arr.length; i++) {
+        if(arr[i+1] >= arr[i]) {
+            max = arr[i+1];
+        }
+    }
+}
 
 
 //solution
