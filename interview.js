@@ -55,6 +55,36 @@
 
 // 4․---------------------------------------------------------------------------
 // ToDo: setInterval-ով ստանալ setTimeout և հակառակը
+// ToDo: Promise-ով ստանալ setTimeout և հակառակը
+
+function mySetTimeout(cb, time) {
+    let timerId;
+    timerId = setInterval(() => {
+        cb();
+        clearInterval(timerId);
+    }, time);
+};
+
+mySetTimeout(() => {
+    console.log("Hello setInterval...")
+}, 5000);
+
+
+function mySetTimeout(cb,time){
+    const pr = new Promise((res)=>{
+        setTimeout(() => {
+            res()
+        }, time);
+    });
+
+    pr.then(()=>{
+        cb()
+    })
+};
+
+mySetTimeout(()=>{
+    console.log("Hello Promise...")
+},5000);
 
 
 // 5․-----------------------------------------------------------------------------
@@ -87,8 +117,8 @@ Array.prototype.insertArrayByStep = function(arrX,step) {
     let i,j,k,tempArray;
     let finArr = [];
 
-    for (i = 0, k = 0; i <= j , k <= arrX.length ; i+=step, k++) {
-        tempArray = arr1.slice(i, i + step);
+    for (i = 0, k = 0; i <= this.length , k <= arrX.length ; i+=step, k++) {
+        tempArray = this.slice(i, i + step);
                  console.log(tempArray);
             for(let p = 0; p <= tempArray.length - 1; p++) {
                 finArr.push(tempArray[p]);
@@ -101,6 +131,8 @@ Array.prototype.insertArrayByStep = function(arrX,step) {
 let res = arr1.insertArrayByStep(["Levon","Ararat"],2);
 console.log('merged array>>>', res);
 
+
+// Version of Lyov>>
 Array.prototype.insertArrayByStep = function(arrX,step){
     const returnedArray = [];
     for(let i = 0, j =0; i<this.length && j < arrX.length; i++){
@@ -178,14 +210,15 @@ const testPromise = new Promise((res, rej) => {
 // ToDo: գրել async ֆունկցիա, որը 5 վայրկյան հետո կտպի Hello:
 
 // callTimer(5000,()=>{console.log("Hello")})
-// console.log(a);
+
+console.log(a);
 
 if(false){
     var a = 5;
 }
 
+//will return undefined !
 
-//
 ///////////////////////////////////////////////////////////////////////////////
 
 
