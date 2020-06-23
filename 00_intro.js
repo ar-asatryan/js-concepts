@@ -1,60 +1,58 @@
-// // //connected to an index.html file for browser practicing !
-// // 'use strict';
-// //
-// // console.log(num);
-// // var num = 1;
-// //
-// //
-// // try{
-// //     a = 5
-// // }catch (e) {
-// //     console.log(e)
-// // }
-// // console.log("Hello")
+'use strict';
 //
-// // "use strict"
+// console.log(num);
+// var num = 1;
 //
-// // function f() {
-// // "use strict";
-// // a = 8;
-// // }
-// // f()
-// // x = 5;
-// //
-// // console.log(5);
+//
+// try{
+//     a = 5
+// }catch (e) {
+//     console.log(e)
+// }
+// console.log("Hello")
+// "use strict"
+// function f() {
+// "use strict";
+    // ToDo: min>> 25:40 - (JavaScript from scratch)
+// a = 8;
+// }
+// f()
+// x = 5;
+//
+// console.log(5);
 // function strictFunction(){
-//     "use strict";
-//     // let y = 10;
-//     // delete y;
+//"use strict";
+// let y = 10;
+// delete y;
+
+// function i(a,a) {
+//     console.log(a)
+// };
 //
-//     // function i(a,a) {
-//     //     console.log(a)
-//     // };
-//     //
-//     // i(15,10)
+// i(15,10)
+
+// const u = {
+//     name1 : "Levon",
+//     name2 : "Ararat",
+// };
 //
-//     // const u = {
-//     //     name1 : "Levon",
-//     //     name2 : "Ararat",
-//     // };
-//     //
-//     // Object.freeze(u);
-//     // //sealed
-//     //
-//     // u.name1 = "isdbfds";
-//     //
-//     //
-//     // console.log(u)
+// Object.freeze(u);
+// //sealed
 //
-//     // const package = 5;
-//     //
-//     // console.log(package)
+// u.name1 = "isdbfds";
 //
-//     // function f(x, o) {
-//     //     with (o) {
-//     //         console.log(x);
-//     //     }
-//     // }
+//
+// console.log(u)
+
+// const package = 5;
+//
+// console.log(package)
+
+// function f(x, o) {
+//     with (o) {
+//         console.log(x);
+//     }
+// }
 //
 //     eval("console.log('this is executed by eval()')");
 //
@@ -94,11 +92,11 @@
 //     }
 // }
 //
-// // function f1() {
-// //     console.log(this)
-// // }
-// //
-// // f1()
+// function f1() {
+//     console.log(this)
+// }
+//
+// f1()
 //
 // let gg;
 // var hh;
@@ -162,19 +160,19 @@
 // console.log(Boolean(null));
 // console.log(Boolean([false]));
 
-// String();
-// // ""  + 25;
-// //
-// // Object.prototype.toString = function(){
-// //     return "Hello156"
-// // }
-// //
-// // console.log(String("-1"));
-// // console.log(String(false));
-// // console.log(String(undefined));
-// // console.log(String(null));
-// // console.log(String({}));
-// // console.log(String());
+//String();
+// ""  + 25;
+//
+// Object.prototype.toString = function(){
+//     return "Hello156"
+// }
+//
+// console.log(String("-1"));
+// console.log(String(false));
+// console.log(String(undefined));
+// console.log(String(null));
+// console.log(String({}));
+// console.log(String());
 
 
 // console.log( (7 || 5) && 8)
