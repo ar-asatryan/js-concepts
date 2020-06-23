@@ -105,3 +105,25 @@ Array.prototype.getObjectWithKeys = function(arrKeys){
 const finArr = arr.getObjectWithKeys(["name1","name2",null,"name3"]);
 console.log(finArr);
 
+//
+const animalActions = {
+    run: function () {
+        console.log(this.name + "  START_RUNNING")
+    },
+    stopRun: function(){
+        console.log(this.name + "  STOP_RUNNING")
+    }
+}
+
+function Animal(name , weight){
+    this.name = name;
+    this.weight = weight
+};
+Animal.prototype = animalActions
+
+const rabbit = new Animal("rabbit",5);
+const lion = new Animal("Lion",25);
+
+rabbit.run();
+rabbit.stopRun();
+lion.run();
