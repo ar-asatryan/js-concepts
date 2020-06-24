@@ -1,56 +1,57 @@
 // 1․-------------------------------------------------------------------
 // ToDo: Էս նույն կոդը գրել մի տողով, օգատործելով || և && օպերատորները։
-// let a = 85;
-// let b = 55;
-// let c = 165;
+let a = 85;
+let b = 55;
+let c = 165;
 
-// if(a<b){
-//     console.log("1")
-// }
-// else if(c<a){
-//     console.log("2")
-// }
-// else{
-//     console.log("3")
-// };
+if(a<b){
+    console.log("1")
+}
+else if(c<a){
+    console.log("2")
+}
+else{
+    console.log("3")
+};
+
 
 // 2.----------------------------------------------------------------------
 //ToDo:  Տպել 1-25 թվերը հերթականությամբ, սակայն Թվերը որոնք բաժանվում են 5-ի կամ 3-ի դրանց փոխարեն տպել`
 // համապատասխանաբար "Five" ու "Three":
 
-// for(let i = 1; i <= 25; i++) {
-//
-//     if(i%3 == 0 && i%5 == 0) {
-//         console.log("3 and 5");
-//     } else if (i % 3 == 0) {
-//         console.log('Three');
-//     } else if (i%5 == 0) {
-//         console.log('Five')
-//     }else {
-//         console.log(i)
-//     }
-// }
+for(let i = 1; i <= 25; i++) {
+
+    if(i%3 == 0 && i%5 == 0) {
+        console.log("3 and 5");
+    } else if (i % 3 == 0) {
+        console.log('Three');
+    } else if (i%5 == 0) {
+        console.log('Five')
+    }else {
+        console.log(i)
+    }
+}
 
 // 3․--------------------------------------------------------------------------
 // ToDo: Էս կոդի կտորը ցանկացած հնարավոր ձևով պահելով, ինչ ուզում ես ավելացրու, նենց արա որ this-ը լինի վերևի object-ը
-// const obj = {
-//     name : "Levon"
-// };
-//
-// setTimeout(()=>{
-//     console.log(this)
-// },2000);
-//
-// // TODO Solution:
-//
-// function th() {
-//
-//     setTimeout(()=>{
-//         console.log('timer finished>>', this)
-//     },1000);
-// }
-//
-// th.call(obj)
+const obj = {
+    name : "Levon"
+};
+
+setTimeout(()=>{
+    console.log(this)
+},2000);
+
+// TODO Solution:
+
+function th() {
+
+    setTimeout(()=>{
+        console.log('timer finished>>', this)
+    },1000);
+}
+
+th.call(obj);
 
 
 // 4․---------------------------------------------------------------------------
@@ -106,7 +107,7 @@ console.log(newArray)
 
 
 // 6․-----------------------------------------------------------------------------
-// ToDo:
+// ToDo: Գրել Ֆունկցիա որը կանչելով հետևյալ կերպ կվերադարձնի նոր array որը կունենա ներքևում նշված տեսքը։
 
 const arr1 = ["HH","BB","KK","OO","LL"];
 
@@ -132,7 +133,7 @@ let res = arr1.insertArrayByStep(["Levon","Ararat"],2);
 console.log('merged array>>>', res);
 
 
-// Version of Lyov>>
+// Lyov version>>
 Array.prototype.insertArrayByStep = function(arrX,step){
     const returnedArray = [];
     for(let i = 0, j =0; i<this.length && j < arrX.length; i++){
@@ -147,29 +148,29 @@ Array.prototype.insertArrayByStep = function(arrX,step){
 
 
 // 7․-----------------------------------------------------------------------------
-// ToDo:
+// ToDo: Գրել Ֆունկցիա որը կանչելով հետևյալ կերպ կվերադարձնի object որը կունենա ներքևում նշված տեսքը։
 
 // const arr2 = ["Ararat", "Levon", 25, true, false];
 
 //arr2.getObjectWithKeys(["name","name1",null,"name2"]);
 
 // Արդյունքը պիտի լինի
-// {
-//     name0 : "Ararat",
-//     name1 : "Levon",
-//     name2 : true
-// }
+const resObj = {
+    name0 : "Ararat",
+    name1 : "Levon",
+    name2 : true
+}
 
 Array.prototype.getObjectWithKeys = function(arrKeys){
-    const obj = {};
+    const resObj = {};
     for(let i = 0; i <= this.length; i++) {
         let key = arrKeys[i];
         if(key == null){
             continue;
         }
-        obj[key] = this[i];
+        resObj[key] = this[i];
     }
-    return obj;
+    return resObj;
 };
 
 const finArr = arr.getObjectWithKeys(["name1","name2",null,"name3"]);
@@ -179,9 +180,45 @@ console.log(finArr)
 //////////////////////////////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 // 8․-----------------------------------------------------------------------------
-// ToDo:
+// ToDo: Տվյալ կոդը run անելուց հետո մտնում ա catch-ի մեջ։
+//  Նշված կոդը նենց անել(օգտագործել մենակ var) որ տպի հետևյալը(1 վայրկյանը մեկը)>
+// START_VALUE
+// 0
+// 1
+// 2
+// 3
+// 4
+// this is data 4
 
-const obj = {
+// const object = {
+//     value: "Hello",
+//     changevalue(value) {
+//         this.value = value;
+//         return this.value
+//     }
+// };
+//
+// let x = 5;
+//
+// const testPromise = new Promise((res, rej) => {
+//     res(this.changevalue(x))
+// }).then((data) => {
+//     // Պիտի տպի x թիվը
+//     console.log("START_VALUE",data);
+//     return data
+// }).catch((data) => {
+//     console.log(data, "CANT CONTINUE");
+// }).then((data) => {
+//     // Պիտի 1 վայրկյանը մեկ տպի 0-ից մինչև x-1 թիվը
+// }).then((data) => {
+//     // Data-ն պետք է լինի x-1 թիվը
+//     console.log("this is data", data)
+// });
+
+
+// ToDo: Solution:
+
+const objX = {
     value: "Hello",
     changevalue(value) {
         this.value = value;
@@ -192,7 +229,10 @@ const obj = {
 let x = 5;
 
 const testPromise = new Promise((res, rej) => {
-    res(this.changevalue(x))
+    function handler() {
+        res(this.changevalue(x))
+    }
+    handler.call(objX);
 }).then((data) => {
     // Պիտի տպի x թիվը
     console.log("START_VALUE",data);
@@ -201,20 +241,36 @@ const testPromise = new Promise((res, rej) => {
     console.log(data, "CANT CONTINUE");
 }).then((data) => {
     // Պիտի 1 վայրկյանը մեկ տպի 0-ից մինչև x-1 թիվը
+    const perSecond = new Promise ( (res,rej) => {
+        function hold(param) {
+            console.log(param);
+            if(param === (data - 1) ) {
+                return res(param);
+            }
+
+            setTimeout( () => {
+                param = param + 1;
+                hold(param);
+            }, 1000)
+        }
+        hold(0);
+    } );
+    return perSecond;
+
 }).then((data) => {
     // Data-ն պետք է լինի x-1 թիվը
     console.log("this is data", data)
 });
 
 // 9․-----------------------------------------------------------------------------
-// ToDo: գրել async ֆունկցիա, որը 5 վայրկյան հետո կտպի Hello:
+// ToDo: Գրել async ֆունկցիա, որը 5 վայրկյան հետո կտպի Hello:
 
 // callTimer(5000,()=>{console.log("Hello")})
 
-console.log(a);
+console.log(num);
 
 if(false){
-    var a = 5;
+    var num = 5;
 }
 
 //will return undefined !
@@ -225,18 +281,18 @@ if(false){
 // 10․-----------------------------------------------------------------------------
 // ToDo: a փոխականի var-ը չփոխելով նենց անել որ տպի 0-ից 5 ։
 
-for(var a = 0; a <= 5; a++){
+for(var ind = 0; ind <= 5; ind++){
     setTimeout(()=>{
-        console.log(a)
+        console.log(ind)
     })
 }
 
 // Solution:
-for(var a = 0; a<5; a++){
-    (function (a){
+for(var ind = 0; ind<5; ind++){
+    (function (ind){
         setTimeout(()=>{
-            console.log('value of a>', a)
+            console.log('value of index>', ind)
         })
-    })(a)
+    })(ind)
 }
 // ------------------------------------------->

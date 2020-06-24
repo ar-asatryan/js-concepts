@@ -1,23 +1,21 @@
 // N1․--------------------------------------------------------------------------
 // ToDo: Էս կոդի կտորը ցանկացած հնարավոր ձևով պահելով, ինչ ուզում ես ավելացրու, նենց արա որ this-ը լինի վերևի object-ը
-const obj = {
-    name : "Levon"
-};
+// const obj = {
+//     name : "Levon"
+// };
 
-setTimeout(()=>{
-    console.log(this)
-},2000);
+// setTimeout(()=>{
+//     console.log(this)
+// },2000);
 
 // TODO Solution:
+// function thisAssign () {
+//     setTimeout(() => {
+//         console.log(this);
+//     }, 3000)
+// }
 
-function th() {
-
-    setTimeout(()=>{
-        console.log('timer finished>>', this)
-    },1000);
-}
-
-th.call(obj)
+//thisAssign.call(obj);
 
 // N2․--------------------------------------------------------------------------
 // ToDo: Գրել ֆունկցիա որի որպես առաջին պարամետր տալիս են մեկ այլ ֆունցիա, մյուս պարամետրով օբյեկտ
@@ -36,8 +34,41 @@ const obj2 = {
     name : "Saqo"
 };
 
+// function getFunctionWithThis(cb, obj) {
+//
+//     cb.call(obj);
+//     function getFuncInside(obj){
+//         cb.call(obj);
+//     }
+//     return getFuncInside;
+// }
 
-// getFunctionWithThis(function () {
-//     console.log(this.name)
-// }, obj0)(obj1)(obj2);
+// function getFunctionWithThis(cb, obj) {
+//
+//     if (obj) {
+//         cb.call(obj);
+//
+//         // function getFunctionWithThis(obj) {
+//         //     cb.call(obj);
+//         // }
+//
+//     } else {
+//         return getFunctionWithThis;
+//     }
+// }
+
+function getFunctionWithThis(cb, obj) {
+    cb.call(obj);
+    return function calling(par) {
+        if (par) {
+            cb.call(par)
+            return calling
+        }
+
+    }
+};
+
+getFunctionWithThis(function () {
+    console.log(this.name)
+}, obj0)(obj1)(obj2)(obj1)(obj2);
 
