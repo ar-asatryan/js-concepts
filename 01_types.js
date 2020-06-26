@@ -16,6 +16,7 @@ console.log(typeof 8848)
 console.log(typeof Infinity)
 console.log(typeof 1/0)
 console.log(1 / 0);
+console.log(typeof this);
 
 //how recognize to types Boolean() class
 console.log('>>>>>>>>>>>>>>>>>>>>>>')

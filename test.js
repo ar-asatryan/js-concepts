@@ -36,23 +36,6 @@
 //
 // }
 
-
-// function sumAdds(num1, num2) {
-//
-//     let sum = num1 + num2;
-//     console.log(sum);
-//
-//     return function(num4, num5) {
-//         sum = num4 + num5;
-//         console.log(sum);
-//     };
-// };
-//
-//
-// let sum = sumAdds(3,8);
-// sum(1,2);
-
-
 // function count() {
 //     let number = 0;
 //
@@ -83,21 +66,6 @@
 // arr.some
 
 
-// const arr1 = [1, 2, 3]
-// const arr2 = [1, 2, 3, 4]
-//
-// // const arr3 = arr1.concat(arr2);
-// const arr3 = [...arr1];
-//
-// console.log(`arr1 content is ${arr1}`)
-// console.log(`arr3 content is ${arr3}`)
-//
-// console.log(arr1 == arr3);
-// console.log(arr1 === arr3);
-
-
-
-
 // value types
 // number, string, undefined, boolean
 
@@ -116,56 +84,64 @@
 // console.log(`arr2 content is ${arr2}`)
 // console.log(`arr3 content is ${arr3}`)
 
-const employee = new Object({
-    name: 'Andres',
-    age: 25,
-    email: "andres@javascript.com"
-});
+// const employee = new Object({
+//     name: 'Andres',
+//     age: 25,
+//     email: "andres@javascript.com"
+// });
+//
+// Object.prototype.sayHello = function() {
+//     console.log('Hello Employees');
+// };
+//
+// const lucas =  Object.create(employee);
+// lucas.sayHello()
+//
+// /////////////////////////////////////////////////////////////////////////////
+// const o1 = {
+//     num1 : 1
+// };
+// const o2 = {
+//     num2: 2
+// };
+//
+// const y = ()=>{
+//     const o = ()=>{
+//         return this.num2
+//     };
+//     return this.num1 + o();
+// };
+//
+// const result = y();
+// console.log(result);
+//
+// /////////////////////////////////////////////////////////////////////////////
+// const o1 = {
+//     num1: 1
+// };
+// const o2 = {
+//     num2: 2
+// };
+//
+// const y = function () {
+//     return (() => {
+//         const o = function () {
+//             return (() => {
+//                 return this.num2
+//             })()
+//         }.bind(o2);
+//         return this.num1 + o();
+//     })()
+// }.bind(o1);
+//
+// const result = y();
+// console.log(result);
+// /////////////////////////////////////////////////////////////////////////////
 
-Object.prototype.sayHello = function() {
-    console.log('Hello Employees');
-};
-
-const lucas =  Object.create(employee);
-lucas.sayHello()
-
-/////////////////////////////////////////////////////////////////////////////
-const o1 = {
-    num1 : 1
-};
-const o2 = {
-    num2: 2
-};
-
-const y = ()=>{
-    const o = ()=>{
-        return this.num2
-    };
-    return this.num1 + o();
-};
-
-const result = y();
-console.log(result);
-
-/////////////////////////////////////////////////////////////////////////////
-const o1 = {
-    num1: 1
-};
-const o2 = {
-    num2: 2
-};
-
-const y = function () {
-    return (() => {
-        const o = function () {
-            return (() => {
-                return this.num2
-            })()
-        }.bind(o2);
-        return this.num1 + o();
-    })()
-}.bind(o1);
-
-const result = y();
-console.log(result);
-/////////////////////////////////////////////////////////////////////////////
+for(var ind = 0; ind<5; ind++){
+    (function (ind){
+        setTimeout(()=>{
+            console.log('value of index>', ind)
+        }, 1000)
+    })(ind)
+}

@@ -34,28 +34,6 @@ const obj2 = {
     name : "Saqo"
 };
 
-// function getFunctionWithThis(cb, obj) {
-//
-//     cb.call(obj);
-//     function getFuncInside(obj){
-//         cb.call(obj);
-//     }
-//     return getFuncInside;
-// }
-
-// function getFunctionWithThis(cb, obj) {
-//
-//     if (obj) {
-//         cb.call(obj);
-//
-//         // function getFunctionWithThis(obj) {
-//         //     cb.call(obj);
-//         // }
-//
-//     } else {
-//         return getFunctionWithThis;
-//     }
-// }
 
 function getFunctionWithThis(cb, obj) {
     cb.call(obj);
