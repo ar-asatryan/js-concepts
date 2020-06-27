@@ -1,5 +1,6 @@
 // 1․-------------------------------------------------------------------
 // ToDo: Էս նույն կոդը գրել մի տողով, օգատործելով || և && օպերատորները։
+// ToDo: Էս նույն կոդը գրել մի տողով, օգատործելով Ternary օպերատորը։
 let a = 85;
 let b = 55;
 let c = 165;
@@ -9,20 +10,27 @@ if(a<b){
 }
 else if(c<a){
     console.log("2")
-}
-else{
+} else{
     console.log("3")
 };
 
+// ToDo: Solution>>
+
+// with && and || operators
+a<b&&console.log("1")||c<a&&console.log("2")||a>b&&a<c&&console.log("3");
+
+// with Ternary Operator
+a<b?console.log("1"):c<a?console.log("2"):console.log("3");
 
 // 2.----------------------------------------------------------------------
-//ToDo:  Տպել 1-25 թվերը հերթականությամբ, սակայն Թվերը որոնք բաժանվում են 5-ի կամ 3-ի դրանց փոխարեն տպել`
-// համապատասխանաբար "Five" ու "Three":
+//ToDo:  Տպել 1-25 թվերը հերթականությամբ, սակայն Թվերը որոնք
+// բաժանվում են 5-ի կամ 3-ի դրանց փոխարեն տպել`համապատասխանաբար "Five" ու "Three":
 
+// ToDo: Solution>>
 for(let i = 1; i <= 25; i++) {
 
     if(i%3 == 0 && i%5 == 0) {
-        console.log("3 and 5");
+        console.log("Three and Five");
     } else if (i % 3 == 0) {
         console.log('Three');
     } else if (i%5 == 0) {
@@ -33,25 +41,27 @@ for(let i = 1; i <= 25; i++) {
 }
 
 // 3․--------------------------------------------------------------------------
-// ToDo: Էս կոդի կտորը ցանկացած հնարավոր ձևով պահելով, ինչ ուզում ես ավելացրու, նենց արա որ this-ը լինի վերևի object-ը
+// ToDo: Էս կոդի կտորը ցանկացած հնարավոր ձևով պահելով,
+//  նենց անել որ this-ը լինի վերևի object-ը:
+
 const obj = {
-    name : "Levon"
+    name : "AroRay"
 };
 
 setTimeout(()=>{
     console.log(this)
 },2000);
 
-// TODO Solution:
+// ToDo: Solution>>
 
-function th() {
+function reAssigner() {
 
     setTimeout(()=>{
         console.log('timer finished>>', this)
     },1000);
 }
 
-th.call(obj);
+reAssigner().call(obj);
 
 
 // 4․---------------------------------------------------------------------------
@@ -59,10 +69,10 @@ th.call(obj);
 // ToDo: Promise-ով ստանալ setTimeout և հակառակը
 
 function mySetTimeout(cb, time) {
-    let timerId;
-    timerId = setInterval(() => {
+    let timerX;
+    timerX = setInterval(() => {
         cb();
-        clearInterval(timerId);
+        clearInterval(timerX);
     }, time);
 };
 
@@ -89,9 +99,15 @@ mySetTimeout(()=>{
 
 
 // 5․-----------------------------------------------------------------------------
-// ToDo: Գրել Ֆունկցիա որը կանչելով հետևյալ կերպ կվերադարձնի նոր array որը կունենա element-ներ նշված type-ով
+// ToDo: Գրել Ֆունկցիա որը կանչելով հետևյալ կերպ կվերադարձնի նոր array`
+//  որը կունենա element-ները նշված type-ով:
 
 const arr = ["Levon", "Ararat", 15, 16, true, false];
+const arr1 = ["HH","BB","KK","OO","LL"];
+
+//arr.getArrayByElementTypes("boolean");
+//Ստանում ենք>
+// finArr  -->  [true,false];
 
 Array.prototype.getArrayByElementTypes = function(type) {
     let newArray = [];
@@ -109,36 +125,17 @@ console.log(newArray)
 // 6․-----------------------------------------------------------------------------
 // ToDo: Գրել Ֆունկցիա որը կանչելով հետևյալ կերպ կվերադարձնի նոր array որը կունենա ներքևում նշված տեսքը։
 
-const arr1 = ["HH","BB","KK","OO","LL"];
+//const arr1 = ["HH","BB","KK","OO","LL"];
 
+// arr1.insertArrayByStep(["Levon","Ararat"],2);
 //Ստանում ենք
 // let finArr  =  ["HH","BB","Levon","KK","OO","Ararat","LL"];
 
-Array.prototype.insertArrayByStep = function(arrX,step) {
-    let i,j,k,tempArray;
-    let finArr = [];
-
-    for (i = 0, k = 0; i <= this.length , k <= arrX.length ; i+=step, k++) {
-        tempArray = this.slice(i, i + step);
-                 console.log(tempArray);
-            for(let p = 0; p <= tempArray.length - 1; p++) {
-                finArr.push(tempArray[p]);
-            }
-            finArr.push(arrX[k]);
-    }
-    return finArr;
-};
-
-let res = arr1.insertArrayByStep(["Levon","Ararat"],2);
-console.log('merged array>>>', res);
-
-
-// Lyov version>>
 Array.prototype.insertArrayByStep = function(arrX,step){
     const returnedArray = [];
     for(let i = 0, j =0; i<this.length && j < arrX.length; i++){
         returnedArray.push(this[i]);
-        if((i+1)%step===0 && i!==0){
+        if( (i+1)%step === 0 && i !== 0 ){
             returnedArray.push(arrX[j]);
             j++;
         }
@@ -146,20 +143,21 @@ Array.prototype.insertArrayByStep = function(arrX,step){
     return returnedArray
 };
 
+let res = arr1.insertArrayByStep(["Levon","Ararat"],2);
+console.log('merged array>>>', res);
 
 // 7․-----------------------------------------------------------------------------
 // ToDo: Գրել Ֆունկցիա որը կանչելով հետևյալ կերպ կվերադարձնի object որը կունենա ներքևում նշված տեսքը։
 
-// const arr2 = ["Ararat", "Levon", 25, true, false];
 
-//arr2.getObjectWithKeys(["name","name1",null,"name2"]);
+//arr.getObjectWithKeys(["name","name1",null,"name2"]);
 
 // Արդյունքը պիտի լինի
-const resObj = {
-    name0 : "Ararat",
-    name1 : "Levon",
-    name2 : true
-}
+// const resObj = {
+//     name0 : "Ararat",
+//     name1 : "Levon",
+//     name2 : true
+// }
 
 Array.prototype.getObjectWithKeys = function(arrKeys){
     const resObj = {};
@@ -174,7 +172,7 @@ Array.prototype.getObjectWithKeys = function(arrKeys){
 };
 
 const finArr = arr.getObjectWithKeys(["name1","name2",null,"name3"]);
-console.log(finArr)
+console.log(finArr);
 
 
 //////////////////////////////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
