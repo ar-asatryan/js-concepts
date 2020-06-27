@@ -68,6 +68,7 @@ reAssigner().call(obj);
 // ToDo: setInterval-ով ստանալ setTimeout և հակառակը
 // ToDo: Promise-ով ստանալ setTimeout և հակառակը
 
+// ToDo 4.1 ->
 function mySetTimeout(cb, time) {
     let timerX;
     timerX = setInterval(() => {
@@ -80,6 +81,14 @@ mySetTimeout(() => {
     console.log("Hello setInterval...")
 }, 5000);
 
+// ToDo 4.2 ->
+function mySetInterval() {
+    console.log("logging every second !");
+    setTimeout(mySetInterval, 1000);
+}
+mySetInterval();
+
+// ToDo 4.3 ->
 
 function mySetTimeout(cb,time){
     const pr = new Promise((res)=>{
@@ -96,7 +105,6 @@ function mySetTimeout(cb,time){
 mySetTimeout(()=>{
     console.log("Hello Promise...")
 },5000);
-
 
 // 5․-----------------------------------------------------------------------------
 // ToDo: Գրել Ֆունկցիա որը կանչելով հետևյալ կերպ կվերադարձնի նոր array`
