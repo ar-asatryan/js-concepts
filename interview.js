@@ -214,7 +214,7 @@ console.log(finArr);
 // });
 
 
-// ToDo: Solution:
+// ToDo: Solution>>
 
 const objX = {
     value: "Hello",
@@ -265,15 +265,19 @@ const testPromise = new Promise((res, rej) => {
 
 // callTimer(5000,()=>{console.log("Hello")})
 
-console.log(num);
+// ToDo: Solution>>
+async function callTimer(time,cb) {
+    const promiseTimer = new Promise( (res) => {
+        setTimeout( () => {
+            res();
+        } , time)
+    });
 
-if(false){
-    var num = 5;
+    await promiseTimer;
+    cb()
 }
 
-//will return undefined !
-
-///////////////////////////////////////////////////////////////////////////////
+callTimer(5000,()=>{console.log("Hello")});
 
 
 // 10․-----------------------------------------------------------------------------
@@ -285,7 +289,7 @@ for(var ind = 0; ind <= 5; ind++){
     })
 }
 
-// Solution:
+// ToDo: Solution>>
 for(var ind = 0; ind<5; ind++){
     (function (ind){
         setTimeout(()=>{
@@ -293,4 +297,14 @@ for(var ind = 0; ind<5; ind++){
         })
     })(ind)
 }
+
+////---------------------------------!
+console.log(num);
+if(false){
+    var num = 5;
+}
+//will return undefined !
+////---------------------------------!
+
+
 // ------------------------------------------->
