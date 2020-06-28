@@ -1,17 +1,33 @@
-//ToDo:  Տպել 1-25 թվերը հերթականությամբ, սակայն Թվերը որոնք բաժանվում են 5-ի կամ 3-ի դրանց փոխարեն տպել`
-// համապատասխանաբար "Five" ու "Three":
 
-// for (let i = 1; i < 55; i++) {
-//     if(i % 3 ===0 && i % 5 === 0) {
-//         console.log('Five and Three');
-//     } else if (i%3 === 0) {
-//         console.log('Three')
-//     }else if (i%5 === 0) {
-//         console.log('Five')
-//     } else {
-//         console.log(i)
-//     }
-// }
+// ToDo:
+const arr = [
+    {
+        cb: ()=>{console.log('element 1:')},
+        time: 2000
+    },{
+        cb: ()=>{console.log('element 2:')},
+        time: 3000
+    },{
+        cb: ()=>{console.log('element 3:')},
+        time: 1000
+    }
+];
+
+function promiseChaining(arr) {
+    const prX = new Promise((res,rej)=>{
+        setTimeout(()=>{
+            arr[0].cb();
+            res()
+        },arr[0].time)
+    });
+
+    prX.then(()=>{
+        arr[1].cb();
+    });
+
+}
+
+promiseChaining(arr)
 
 
 
@@ -24,5 +40,4 @@
 
 
 
-const arr = ["Levon", "Ararat", 15, 16, true, false];
-const arr1 = ["HH","BB","KK","OO","LL"];
+//console.log(global)
