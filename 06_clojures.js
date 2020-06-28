@@ -53,7 +53,22 @@ addFunction()
 addFunction()
 
 
+let num1 = 3333;
 
+function f1( ) {
+
+    let num1 = 45;
+
+
+    return function f2() {
+        console.log(num1);
+    }
+
+}
+
+const finFunc = f1();
+
+finFunc();
 
 
 

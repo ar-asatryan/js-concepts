@@ -50,3 +50,27 @@ getFunctionWithThis(function () {
     console.log(this.name)
 }, obj0)(obj1)(obj2)(obj1)(obj2);
 
+
+
+// ToDo: Գրել MyBind() ֆունկցիա
+
+
+function myBind(cb, obj) {
+    return function() {
+        cb.call(obj);
+    }
+}
+
+const obj1 = {
+    name1: "AroRay"
+}
+
+function func1() {
+    console.log('func1',this)
+}
+
+const y = myBind(func1, obj1);
+
+
+y()
+
