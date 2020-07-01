@@ -102,3 +102,91 @@ function logData(value) {
 }
 
 getRedisData(logData, a)
+
+// ToDo: START INTERVIEW>>>
+
+
+/////////////////////////////////////
+// ToDo: N1
+async function getData(url) {
+
+    return new Promise( (res) => {
+        const timerX = setTimeout( () => {
+            res("data "+ url);
+        }, 3000);
+        setTimeout( ()=>{
+            res("Got_Data");
+            clearInterval(timerX);
+        }, 1000);
+    });
+}
+
+
+(async function f1() {
+    const arr = ["google.com", "abc", "nodejs.org"];
+    const data = await Promise.all(arr.map(elem => getData(elem)));
+    console.log(data);
+
+})();
+///////////////////////////////////////
+
+//ToDo: N2
+async function getData(url) {
+
+    return new Promise( (res) => {
+        const timerX = setTimeout( () => {
+            res(null);
+        }, 3000);
+
+    });
+
+    const pr2 = new Promise( ()=>{
+        setTimeout( ()=>{
+            res("Got_Data");
+
+        }, 1000);
+    });
+
+}
+
+
+(async function f1() {
+    const arr = ["google.com", "abc", "nodejs.org"];
+    const data = await Promise.all(arr.map(elem => getData(elem)));
+    console.log(data);
+
+})();
+
+///////////////////////////////////////////////////////////
+
+// ToDo: N3
+
+
+async function getData(url) {
+
+    return new Promise( (res) => {
+        const timerX = setTimeout( () => {
+            res("get data");
+        }, 3000);
+
+    });
+}
+
+
+(async function f1() {
+    const arr = ["google.com", "abc", "nodejs.org"];
+
+
+    const arrPromises = [Promise.all(arr.map(elem => getData(elem))),
+        new Promise((res)=>{
+            setTimeout(()=>{
+                res(null)
+            }, 2000)
+        })];
+
+    const data = await Promise.race(arrPromises);
+    console.log(data);
+
+})();
+
+//////////////////////////////////////////////////////////////
