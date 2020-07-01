@@ -68,7 +68,8 @@ reAssigner.call(obj);
 // ToDo: setInterval-ով ստանալ setTimeout և հակառակը
 // ToDo: Promise-ով ստանալ setTimeout և հակառակը
 
-// ToDo 4.1 ->
+//
+// ToDo 4.1 -> mySetTimeOut via setInterval ->
 function mySetTimeout(cb, time) {
     let timerX;
     timerX = setInterval(() => {
@@ -81,22 +82,35 @@ mySetTimeout(() => {
     console.log("Hello setInterval...")
 }, 5000);
 
-// ToDo 4.2 ->
-function mySetInterval() {
-    console.log("logging every second !");
-    setTimeout(mySetInterval, 1000);
-}
-mySetInterval();
-
+//
+// ToDo 4.2 -> mySetInterval Version N1 ->
 function mySetInterval(cb,time) {
-    console.log("logging every second !");
-    setTimeout(() => {
-        mySetInterval()
-    }, time);
+    setTimeout(()=>{
+        cb();
+        mySetInterval(cb,time)
+    },1000)
 }
+
 mySetInterval(() => { console.log("logging every second !")}, 1000);
 
-// ToDo 4.3 ->
+//
+// ToDo 4.3 -> mySetInterval Version N2 ->
+function mySetinterval(cb,time){
+    function calling(){
+        setTimeout(()=>{
+            cb();
+            calling();
+        }, 1000)
+
+    }
+    calling();
+}
+
+
+mySetinterval(() => { console.log("logging every second !")}, 1000);
+
+//
+// ToDo 4.4 -> mySetTimeOut via Promise ->
 
 function mySetTimeout(cb,time){
     const pr = new Promise((res)=>{
@@ -108,7 +122,7 @@ function mySetTimeout(cb,time){
     pr.then(()=>{
         cb()
     })
-};
+}
 
 mySetTimeout(()=>{
     console.log("Hello Promise...")
