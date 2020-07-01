@@ -61,7 +61,7 @@ function reAssigner() {
     },1000);
 }
 
-reAssigner().call(obj);
+reAssigner.call(obj);
 
 
 // 4․---------------------------------------------------------------------------
@@ -87,6 +87,14 @@ function mySetInterval() {
     setTimeout(mySetInterval, 1000);
 }
 mySetInterval();
+
+function mySetInterval(cb,time) {
+    console.log("logging every second !");
+    setTimeout(() => {
+        mySetInterval()
+    }, time);
+}
+mySetInterval(() => { console.log("logging every second !")}, 1000);
 
 // ToDo 4.3 ->
 
@@ -127,7 +135,7 @@ Array.prototype.getArrayByElementTypes = function(type) {
     return newArray;
 };
 const newArray =  arr.getArrayByElementTypes("boolean");
-console.log(newArray)
+console.log(newArray);
 
 
 // 6․-----------------------------------------------------------------------------
@@ -314,5 +322,88 @@ if(false){
 //will return undefined !
 ////---------------------------------!
 
+// 11․-----------------------------------------------------------------------------
+// ToDo։
+//
+async function getData(url) {
 
+    return new Promise( (res) => {
+        const timerX = setTimeout( () => {
+            res("data "+ url);
+        }, 3000);
+        setTimeout( ()=>{
+            res("Got_Data");
+            clearInterval(timerX);
+        }, 1000);
+    });
+}
+
+
+(async function f1() {
+    const arr = ["google.com", "abc", "nodejs.org"];
+    const data = await Promise.all(arr.map(elem => getData(elem)));
+    console.log(data);
+
+})();
 // ------------------------------------------->
+
+// 12․-----------------------------------------------------------------------------
+//ToDo: N2
+async function getData(url) {
+
+    return new Promise( (res) => {
+        const timerX = setTimeout( () => {
+            res(null);
+        }, 3000);
+
+    });
+
+    const pr2 = new Promise( ()=>{
+        setTimeout( ()=>{
+            res("Got_Data");
+
+        }, 1000);
+    });
+
+}
+
+
+(async function f1() {
+    const arr = ["google.com", "abc", "nodejs.org"];
+    const data = await Promise.all(arr.map(elem => getData(elem)));
+    console.log(data);
+
+})();
+
+///////////////////////////////////////////////////////////
+
+// 13․-----------------------------------------------------------------------------
+// ToDo: N3
+async function getData(url) {
+
+    return new Promise( (res) => {
+        const timerX = setTimeout( () => {
+            res("get data");
+        }, 3000);
+
+    });
+}
+
+
+(async function f1() {
+    const arr = ["google.com", "abc", "nodejs.org"];
+
+
+    const arrPromises = [Promise.all(arr.map(elem => getData(elem))),
+        new Promise((res)=>{
+            setTimeout(()=>{
+                res(null)
+            }, 2000)
+        })];
+
+    const data = await Promise.race(arrPromises);
+    console.log(data);
+
+})();
+
+//////////////////////////////////////////////////////////////
