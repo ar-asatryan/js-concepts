@@ -72,17 +72,17 @@
 //
 // mySetTimeout(() => console.log('mySetTimeout', 15), 2000);
 
-function mySetTimeout(callback,time) {
-    return new Promise( (res) => {
-        setTimeout( () => {
-            res();
-        }, time);
-    }).then( () => {
-        callback();
-    });
-}
-
-mySetTimeout( () => console.log('mySetTimeout', 13), 3000)
+// function mySetTimeout(callback,time) {
+//     return new Promise( (res) => {
+//         setTimeout( () => {
+//             res();
+//         }, time);
+//     }).then( () => {
+//         callback();
+//     });
+// }
+//
+// mySetTimeout( () => console.log('mySetTimeout', 13), 3000)
 
 
 
@@ -94,7 +94,16 @@ const arr = ["Levon", "Ararat", 15, 16, true, false];
 const arr1 = ["HH","BB","KK","OO","LL"];
 
 
+Array.prototype.getArrayByElementTypes = function(type) {
 
+    let returnedArr = [];
+    for (let el = 0; el < this.length; el++) {
+        if ( typeof this[el] === type) {
+            returnedArr.push(this[el]);
+        }
+    }
+    return returnedArr;
+}
 
-
+console.log(arr.getArrayByElementTypes('boolean'));
 
