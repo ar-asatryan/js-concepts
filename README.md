@@ -5,3 +5,5 @@ Coding practising - JavaScript concepts from zero to hero for Junior developers 
     - 
     variable types, `typeof` operator, undefined/null/NaN types
     
+2. Hoisting
+    - tasks about hoisting and javascript code compilation
