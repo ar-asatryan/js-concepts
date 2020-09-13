@@ -11,7 +11,8 @@ Coding practising - JavaScript concepts from zero to hero for Junior developers 
     - functions and examples
 
 4. Closure
-     - Examples of closure of functions
-     - practise functions for exploring closure
+    - Examples of closure of functions
+    - practise functions for exploring closure
      
-5.
+5. this
+    - object oriented basic concepts in JavaScript
