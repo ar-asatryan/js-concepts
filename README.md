@@ -6,7 +6,12 @@ Coding practising - JavaScript concepts from zero to hero for Junior developers 
     
 2. Hoisting
     - tasks about hoisting and javascript code compilation
+    
+3. Functions
+    - functions and examples
 
-3. Closure
+4. Closure
      - Examples of closure of functions
      - practise functions for exploring closure
+     
+5.
