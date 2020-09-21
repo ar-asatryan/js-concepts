@@ -18,3 +18,5 @@ Coding practising - JavaScript concepts from zero to hero for Junior developers 
     - object oriented basic concepts in JavaScript
 
 6. Asyncronous JavaScript
+
+7. Prototypes
