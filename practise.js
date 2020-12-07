@@ -6,23 +6,6 @@ setTimeout(function () {
     console.log('setTimeout operation')
 },5000)
 
-console.log('execution', 'Operation4')
-console.log('execution', 'Operation5')
-console.log('execution', 'Operation6')
-
-
-
-const funcExpr = function() {};
-
-console.log(typeof funcExpr);
-
-
-setTimeout( function() {
-    console.log('console output')
-}, 2000);
-
-
-
 console.log('=================>')
 console.log(typeof {});
 console.log(typeof []);
@@ -30,7 +13,6 @@ console.log(typeof function() {});
 console.log(Boolean({}))
 console.log(Boolean([]))
 console.log(Boolean(function(){}))
-
 
 console.log()
 

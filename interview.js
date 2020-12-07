@@ -83,36 +83,9 @@ mySetTimeout(() => {
 }, 5000);
 
 //
-// ToDo 4.2 -> mySetInterval Version N1 ->
-function mySetInterval(cb,time) {
-    setTimeout(()=>{
-        cb();
-        mySetInterval(cb,time)
-    },1000)
-}
+// ToDo 4.2 -> mySetTimeOut via Promise ->
 
-mySetInterval(() => { console.log("logging every second !")}, 1000);
-
-//
-// ToDo 4.3 -> mySetInterval Version N2 ->
-function mySetinterval(cb,time){
-    function calling(){
-        setTimeout(()=>{
-            cb();
-            calling();
-        }, 1000)
-
-    }
-    calling();
-}
-
-
-mySetinterval(() => { console.log("logging every second !")}, 1000);
-
-//
-// ToDo 4.4 -> mySetTimeOut via Promise ->
-
-function mySetTimeout(cb,time){
+function mySetTimeout2(cb,time){
     const pr = new Promise((res)=>{
         setTimeout(() => {
             res()
@@ -124,9 +97,37 @@ function mySetTimeout(cb,time){
     })
 }
 
-mySetTimeout(()=>{
+mySetTimeout2(()=>{
     console.log("Hello Promise...")
 },5000);
+
+//
+// ToDo 4.3 -> mySetInterval Version N1 ->
+function mySetInterval(cb,time) {
+    setTimeout(()=>{
+        cb();
+        mySetInterval(cb,time)
+    },1000)
+}
+
+mySetInterval(() => { console.log("logging every second v1 !")}, 1000);
+
+//
+// ToDo 4.4 -> mySetInterval Version N2 ->
+function mySetInterval2(cb,time){
+    function calling(){
+        setTimeout(()=>{
+            cb();
+            calling();
+        }, 1000)
+
+    }
+    calling();
+}
+
+
+mySetInterval2(() => { console.log("logging every second v2!")}, 1000);
+
 
 // 5․-----------------------------------------------------------------------------
 // ToDo: Գրել Ֆունկցիա որը կանչելով հետևյալ կերպ կվերադարձնի նոր array`
@@ -178,7 +179,6 @@ console.log('merged array>>>', res);
 
 // 7․-----------------------------------------------------------------------------
 // ToDo: Գրել Ֆունկցիա որը կանչելով հետևյալ կերպ կվերադարձնի object որը կունենա ներքևում նշված տեսքը։
-
 
 //arr.getObjectWithKeys(["name","name1",null,"name2"]);
 
@@ -313,19 +313,19 @@ callTimer(5000,()=>{console.log("Hello")});
 // 10․-----------------------------------------------------------------------------
 // ToDo: a փոխականի var-ը չփոխելով նենց անել որ տպի 0-ից 5 ։
 
-for(var ind = 0; ind <= 5; ind++){
+for(var a = 0; a <= 5; a++){
     setTimeout(()=>{
-        console.log(ind)
+        console.log(a)
     })
 }
 
 // ToDo: Solution>>
-for(var ind = 0; ind<5; ind++){
+for(var a = 0; a<5; a++){
     (function (ind){
         setTimeout(()=>{
-            console.log('value of index>', ind)
+            console.log('value of index>', a)
         })
-    })(ind)
+    })(a)
 }
 
 ////---------------------------------!
@@ -337,7 +337,7 @@ if(false){
 ////---------------------------------!
 
 // 11․-----------------------------------------------------------------------------
-// ToDo։
+// ToDo։ N1
 //
 async function getData(url) {
 
@@ -354,7 +354,7 @@ async function getData(url) {
 
 
 (async function f1() {
-    const arr = ["google.com", "abc", "nodejs.org"];
+    const arr = ["google.com", "github.com", "nodejs.org"];
     const data = await Promise.all(arr.map(elem => getData(elem)));
     console.log(data);
 
@@ -362,7 +362,8 @@ async function getData(url) {
 // ------------------------------------------->
 
 // 12․-----------------------------------------------------------------------------
-//ToDo: N2
+// ToDo: N2
+//
 async function getData(url) {
 
     return new Promise( (res) => {
@@ -383,7 +384,7 @@ async function getData(url) {
 
 
 (async function f1() {
-    const arr = ["google.com", "abc", "nodejs.org"];
+    const arr = ["google.com", "github.com", "nodejs.org"];
     const data = await Promise.all(arr.map(elem => getData(elem)));
     console.log(data);
 
@@ -405,7 +406,7 @@ async function getData(url) {
 
 
 (async function f1() {
-    const arr = ["google.com", "abc", "nodejs.org"];
+    const arr = ["google.com", "github.com", "nodejs.org"];
 
 
     const arrPromises = [Promise.all(arr.map(elem => getData(elem))),

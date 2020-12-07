@@ -1,50 +1,25 @@
+console.log('start')
+//
+let redisObj = {
+    data1: 'red_data1',
+    data2: 'red_data2'
+};
 
-// ToDo:
+let a;
 
-async function getData(url) {
-
-    return new Promise( (res) => {
-        const timerX = setTimeout( () => {
-            res("get data");
-        }, 3000);
-
-    });
+function getRedis(cb,time) {
+    setTimeout( () => {
+        a = redisObj.data1;
+        cb()
+    }, time)
 }
 
-
-(async function f1() {
-    const arr = ["google.com", "abc", "nodejs.org"];
+console.log("value of a: (case1)", a)
 
 
-    const arrPromises = [Promise.all(arr.map(elem => getData(elem))),
-        new Promise((res)=>{
-            setTimeout(()=>{
-                res(null)
-            }, 2000)
-        })];
-
-    const data = await Promise.race(arrPromises);
-    console.log(data);
-
-})();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//console.log(global)
+getRedis(() => {
+    console.log("value of a: (case2)", a);
+    getRedis(() => {
+        console.log("value of a: (case3)",a);
+    }, 3000);
+}, 2000);
