@@ -1,31 +1,35 @@
 // ToDo: 1.
 
 let redisObj = {
-    data1: 'red_data1',
-    data2: 'red_data2'
+    data1: {
+        "what": "redis data",
+        "type": "object",
+        "isOkay": true
+    },
+    data2: 'redis_data2'
 };
 
-let a;
+let data;
 
 function getRedis(cb,time) {
     setTimeout( () => {
-        a = redisObj.data1;
+        data = redisObj.data1;
         cb()
     }, time)
 }
 
-console.log("value of a: (case1)", a)
+console.log("value of data: (case1)", data)
 
 
 getRedis(() => {
-    console.log("value of a: (case2)", a);
+    console.log("value of data: (case2)", data);
     getRedis(() => {
-        console.log("value of a: (case3)",a);
-    }, 3000);
-}, 2000);
+        console.log("value of data: (case3)",data);
+    }, 2000);
+}, 1000);
 
 
-// ToDo: 2.
+// ToDo: 2. Via Callback>>
 
 //console.log(redisObj.data);
 
@@ -43,10 +47,10 @@ function logData (value) {
 }
 
 //getDataFromRedis(a);
-getDataFromRedis(a, logData);
-logData(a);
+getDataFromRedis(data, logData);
+logData(data);
 
-// ToDo: 3.
+// ToDo: 3. Via Promise>>
 
 const redisObj = {
     data1: 'redis_data1',
@@ -75,7 +79,7 @@ function logData(value) {
 
 getRedisData(logData, a);
 
-// ToDo: 4.
+// ToDo: 4. via Async/Await
 
 
 const redisObj = {
@@ -123,7 +127,7 @@ async function getData(url) {
 
 
 (async function f1() {
-    const arr = ["google.com", "abc", "nodejs.org"];
+    const arr = ["google.com", "github.com", "nodejs.org"];
     const data = await Promise.all(arr.map(elem => getData(elem)));
     console.log(data);
 
@@ -151,7 +155,7 @@ async function getData(url) {
 
 
 (async function f1() {
-    const arr = ["google.com", "abc", "nodejs.org"];
+    const arr = ["google.com", "github.com", "nodejs.org"];
     const data = await Promise.all(arr.map(elem => getData(elem)));
     console.log(data);
 
@@ -174,7 +178,7 @@ async function getData(url) {
 
 
 (async function f1() {
-    const arr = ["google.com", "abc", "nodejs.org"];
+    const arr = ["google.com", "github.com", "nodejs.org"];
 
 
     const arrPromises = [Promise.all(arr.map(elem => getData(elem))),
