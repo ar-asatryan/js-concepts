@@ -1,6 +1,8 @@
-const employee = {};
+// value types: number, string, undefined, boolean
+// reference type: function, object, arrays
 
-employee.name = 'Richard';
+const employee = {};
+employee.name = 'Donny';
 employee.age = 25;
 employee.email = 'info@javascript.com';
 employee.action = function() {
@@ -25,12 +27,18 @@ let arrMap = arr.map((item,i,arr)=>{
 });
 console.log(arrMap);
 
-arr.every
-arr.some
 
 
-// value types
-// number, string, undefined, boolean
 
-// reference type
-// function, object, arrays
+
+
+
+
+
+
+
+
+
+
+
+
