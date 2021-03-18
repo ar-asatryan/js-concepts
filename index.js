@@ -1,25 +1,56 @@
-console.log('start')
-//
-let redisObj = {
-    data1: 'red_data1',
-    data2: 'red_data2'
+const GAME_CARS_SUITS = ["h", "d", "s", "c"];
+
+const GAME_CARD_SYMBOLS = [
+  "A",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "J",
+  "Q",
+  "K",
+];
+
+const getShuffledDeck = () => {
+  return shuffledArray(
+    GAME_CARS_SUITS.map((suit) =>
+      GAME_CARD_SYMBOLS.map((symbol) => `${suit}${symbol}`)
+    ).flat()
+  );
 };
 
-let a;
+const shuffledArray = (a) => {
+  const b = [...a];
+  for (let i = b.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [b[i], b[j]] = [b[j], b[i]];
+  }
+  return b;
+};
 
-function getRedis(cb,time) {
-    setTimeout( () => {
-        a = redisObj.data1;
-        cb()
-    }, time)
-}
+const SOLITAIRE_STOCK_COUNT = 24;
+const SOLITAIRE_COLUMNS_COUNT = 7;
 
-console.log("value of a: (case1)", a)
+const getSolitaireBoard = () => {
+  const cards = getShuffledDeck();
+  const stock = cards.splice(0, SOLITAIRE_STOCK_COUNT);
+  const columns = [];
+  for (let i = 1; i <= SOLITAIRE_COLUMNS_COUNT; i++) {
+    columns.push(cards.splice(0, i).map((c, j) => (j === i - 1 ? `v${c}` : c)));
+  }
+  return {
+    stock,
+    columns,
+  };
+};
 
+const deck = getShuffledDeck();
+console.log("cards deck-------->", deck);
 
-getRedis(() => {
-    console.log("value of a: (case2)", a);
-    getRedis(() => {
-        console.log("value of a: (case3)",a);
-    }, 3000);
-}, 2000);
+const board = getSolitaireBoard();
+console.log("board--------->", board);
