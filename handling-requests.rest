@@ -1,0 +1,22 @@
+POST http://localhost:9567/local/games/auth
+Content-Type: application/json
+
+{
+  "avatar": "b21070f0-703d-11eb-96ec-57d92ae8a322",
+  "username": "bruce-banner",
+  "pk": "public-key-1",
+  "pkh": "public-key-hash-1",
+  "data": {
+      "email": "banner35@gmail.com",
+      "name": "Bruce Banner"
+  }
+}
+###
+
+POST http://localhost:9567/local/admin/games
+
+###
+
+GET  http://localhost:9567/local/games/my-last-games
+Authorization: 0f41ac70-8714-11eb-841a-3f1947fbd266
+
