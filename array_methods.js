@@ -1,4 +1,5 @@
 const arrNums = [13, 2, 78, 0, -7, 59, 65];
+let numsSequence = [1, 2, 3, 4, 5];
 
 const users = [
   { id: 1, name: "tony", surname: "stark", age: 45, cool: true },
@@ -7,6 +8,14 @@ const users = [
   { id: 4, name: "steve", surname: "rogers", age: 73, cool: false },
   { id: 5, name: "sia", surname: "yung", age: 33, cool: true },
   { id: 6, name: "mystic", surname: "man", age: 30, cool: false },
+];
+
+const companies = [
+  { id: 1, company: "Google", category: "Software", start: 1994, end: 2004 },
+  { id: 2, company: "Synopsys", category: "Hardware", start: 2004, end: 2020 },
+  { id: 3, company: "Cisco", category: "Hardware", start: 2011, end: 2019 },
+  { id: 4, company: "Netflix", category: "Media", start: 2014, end: 2021 },
+  { id: 5, company: "Marvel", category: "Comics", start: 2008, end: 2019 },
 ];
 
 const specUser = users.find((u) => u.id > 1);
@@ -86,6 +95,13 @@ Array.prototype.myMap = function (callback) {
   return this.reduce(mapReducer, initialArray);
 };
 
+Array.prototype.myReduce = function (reducer, accumulator) {
+  for (let i = 0; i <= this.length; i++) {
+    accumulator = reducer(accumulator, i);
+  }
+  return accumulator;
+};
+
 const usersMap = users.myMap((user) => ({
   id: user.id,
   fullname: `${user.name} ${user.surname}`,
@@ -97,7 +113,28 @@ const usersMap2 = users.myMap((user) => ({
 }));
 
 const filteredUsers = users.myFilter((user) => user.name === "steve");
+console.log(
+  "my filtered array",
+  companies.myFilter((c) => c.category === "Hardware")
+);
 
 console.log(usersMap);
 console.log(usersMap2);
 console.log(filteredUsers);
+
+const usersMapFullname = users.myMap((user) => ({
+  id: user.id,
+  age: user.age,
+  fullname: `${user.name} ${user.surname}`,
+}));
+
+console.log("mapped users: ", usersMapFullname);
+
+const filteredCompanies = companies.filter(
+  (c) => c.start > YEAR_LIMITATION_VALUE
+);
+
+console.log("filteredCompanies: ", filteredCompanies);
+
+let result = numsSequence.myReduce((sum, current) => sum + current, 0);
+console.log("myReduce function result: ", result);
