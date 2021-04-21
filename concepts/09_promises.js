@@ -1,5 +1,4 @@
 // Promise
-
 class CustomPromise {
   constructor(exec) {
     this.status = "pending";
@@ -38,35 +37,38 @@ class CustomPromise {
   }
 }
 
-function getNumberAsync() {
-  return new CustomPromise((resolve, reject) => {
-    setTimeout(() => resolve(2), 2000);
-  });
-}
+// function getNumberAsync() {
+//   return new CustomPromise((resolve, reject) => {
+//     setTimeout(() => resolve(2), 2000);
+//   });
+// }
 
-const p = getNumberAsync();
+// const p = getNumberAsync();
 
-p.then((n) => {
-  console.log("number", n);
-});
-
-console.log(1);
-p.then((n) => {
-  console.log("number", n);
-});
-
-console.log(2);
-
-// promise -> execFunc()
-// const promises = [];
-
-// const promise1 = myPromise.resolve(15);
-
-// promises.push(promise1, myPromise.resolve(25));
-
-// console.log(promises);
-// console.log(promise1);
-
-// Promise.all(promises).then((result) => {
-//   console.log(result);
+// p.then((n) => {
+//   console.log("number", n);
 // });
+
+// console.log(1);
+// p.then((n) => {
+//   console.log("number", n);
+// });
+
+// console.log(2);
+
+//
+
+const promises = [];
+
+const myPromise1 = new CustomPromise(function (resolve, reject) {
+  setTimeout(() => resolve("done"), 2000);
+});
+
+const myPromise2 = new CustomPromise((res, rej) => {
+  setTimeout(() => res("done2"), 2000);
+});
+
+promises.push(myPromise1, myPromise2);
+Promise.all(promises).then((result) => {
+  console.log(result);
+});

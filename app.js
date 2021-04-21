@@ -1,4 +1,6 @@
 const arrNums = [13, 2, 78, 0, -7, 59, 65];
+const numsSequence = [1, 2, 3, 4, 5];
+const companyNames = ["Google", "Synopsys", "Cisco", "Netflix", "Marvel"];
 
 const users = [
   { id: 1, name: "tony", surname: "stark", age: 45, cool: true },
@@ -12,20 +14,33 @@ const users = [
 const companies = [
   { id: 1, company: "Google", category: "Software", start: 1994, end: 2004 },
   { id: 2, company: "Synopsys", category: "Hardware", start: 2004, end: 2020 },
-  { id: 3, company: "Netflix", category: "Media", start: 2014, end: 2021 },
-  { id: 4, company: "Marvel", category: "Comics", start: 2008, end: 2019 },
+  { id: 3, company: "Cisco", category: "Hardware", start: 2011, end: 2019 },
+  { id: 4, company: "Netflix", category: "Media", start: 2014, end: 2021 },
+  { id: 5, company: "Marvel", category: "Comics", start: 2008, end: 2019 },
 ];
 
-// ToDo:
+console.log("users:", users);
+console.log("companies:", companies);
 
-Array.prototype.myMap = function (callback) {
-  const initArr = [];
-  const mapReducer = (mappedArr, currentItem) =>
-    mappedArr.concat(callback(currentItem));
-  return this.reduce(mapReducer, initArr);
-};
+const usersMap = users.map( u => ({
+  id: u.id,
+  fullname: `${u.name} ${u.surname}`
+}) );
 
-const usersMap = users.myMap((user) => ({
+console.log("usersMap", usersMap);
+
+// implementing myMap method using JavaScript .reduce()>>
+Array.prototype.myMap = function(callback) {
+  const initArray = [];
+  const mapReducer = (mappedArray, currentItem) =>
+  mappedArray.concat(callback(currentItem));
+  return this.reduce(mapReducer, initArray); 
+}
+
+const myUsersMap = users.myMap( user => ({
   id: user.id,
-  fullname: ``,
+  age: user.age,
+  fullname: `${user.name} ${user.surname}`
 }));
+
+console.log("myUsersMap:", myUsersMap);

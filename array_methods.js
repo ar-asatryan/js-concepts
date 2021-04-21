@@ -1,5 +1,6 @@
 const arrNums = [13, 2, 78, 0, -7, 59, 65];
-let numsSequence = [1, 2, 3, 4, 5];
+const numsSequence = [1, 2, 3, 4, 5];
+const companyNames = ["Google", "Synopsys", "Cisco", "Netflix", "Marvel"];
 
 const users = [
   { id: 1, name: "tony", surname: "stark", age: 45, cool: true },
@@ -18,6 +19,16 @@ const companies = [
   { id: 5, company: "Marvel", category: "Comics", start: 2008, end: 2019 },
 ];
 
+console.log("users:", users);
+console.log("companies:", companies);
+
+//
+// Array Methods testing section:
+companyNames.forEach((company) => console.log(company));
+companies.forEach((c) => console.log("Category -", `${c.category}`));
+companies.forEach((c) => (c.category = companyNames));
+console.log("modified companies", companies);
+
 const specUser = users.find((u) => u.id > 1);
 const myUsers = users.map((h) => h.name);
 const filteredUsers = users.filter((h) => h.id > 1);
@@ -25,10 +36,6 @@ const filteredUsers = users.filter((h) => h.id > 1);
 console.log("find-->", specUser);
 console.log("map-->", myUsers);
 console.log("filter-->", filteredUsers);
-
-// let fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango']
-// const modified = fruits.slice(2,4);
-// console.log(modified);
 
 const usersMap = users.map((user) => ({
   id: user.id,
@@ -43,19 +50,7 @@ console.log(concatedArr);
 
 console.log(users.find((item) => item.surname === "banner"));
 
-const usersMap = users.map((item) => ({
-  id: item.id,
-  fullname: `${item.name} ${item.surname}`,
-}));
-
-const usersMap2 = users.map((user) => ({
-  noIdea: user.surname,
-}));
-
-console.log("noIdea:", usersMap2);
-console.log(usersMap);
 console.log(users[0].name);
-
 console.log(
   "test array some method>",
   usersMap.some((elem) => elem.fullname === users[0].fullname)
@@ -64,18 +59,42 @@ console.log(
 const isEveryTest = arrNums.every((elem) => elem < 66);
 console.log("every method test", isEveryTest);
 
-// // //
+// // // implementation of JavaScript Array methods:
 
+//
+// implementing myMap method using JavaScript .reduce() and .push()>>
 Array.prototype.myMapTest = function (callback) {
   var arr = [];
-
   for (let i = 0; i < this.length; i++) {
     arr.push(callback(this[i]));
   }
-
   return arr;
 };
 
+Array.prototype.myMap = function (callback) {
+  const initialArray = [];
+  const mapReducer = (mappedArray, currentItem) =>
+    mappedArray.concat(callback(currentItem));
+  return this.reduce(mapReducer, initialArray);
+};
+
+const usersMapFullname = users.myMap((user) => ({
+  id: user.id,
+  age: user.age,
+  fullname: `${user.name} ${user.surname}`,
+}));
+
+const myUsersMap = users.myMap((user) => ({
+  id: user.id,
+  fullname: `${user.name} ${user.surname}`,
+  age: user.age,
+}));
+
+console.log("mapped users: ", usersMapFullname);
+console.log("myUsersMap: ", myUsersMap);
+
+//
+// implementing myFilter method using JavaScript .reduce()>>
 Array.prototype.myFilter = function (callback) {
   const initialArray = [];
   const filterReducer = (filteredArray, currentItem) => {
@@ -88,53 +107,27 @@ Array.prototype.myFilter = function (callback) {
   return this.reduce(filterReducer, initialArray);
 };
 
-Array.prototype.myMap = function (callback) {
-  const initialArray = [];
-  const mapReducer = (mappedArray, currentItem) =>
-    mappedArray.concat(callback(currentItem));
-  return this.reduce(mapReducer, initialArray);
-};
-
-Array.prototype.myReduce = function (reducer, accumulator) {
-  for (let i = 0; i <= this.length; i++) {
-    accumulator = reducer(accumulator, i);
-  }
-  return accumulator;
-};
-
-const usersMap = users.myMap((user) => ({
-  id: user.id,
-  fullname: `${user.name} ${user.surname}`,
-  age: user.age,
-}));
-
-const usersMap2 = users.myMap((user) => ({
-  name: user.name,
-}));
-
 const filteredUsers = users.myFilter((user) => user.name === "steve");
 console.log(
   "my filtered array",
   companies.myFilter((c) => c.category === "Hardware")
 );
-
-console.log(usersMap);
-console.log(usersMap2);
 console.log(filteredUsers);
-
-const usersMapFullname = users.myMap((user) => ({
-  id: user.id,
-  age: user.age,
-  fullname: `${user.name} ${user.surname}`,
-}));
-
-console.log("mapped users: ", usersMapFullname);
 
 const filteredCompanies = companies.filter(
   (c) => c.start > YEAR_LIMITATION_VALUE
 );
 
 console.log("filteredCompanies: ", filteredCompanies);
+
+//
+// implementing myReduce method using JavaScript for loop>>
+Array.prototype.myReduce = function (reducer, accumulator) {
+  for (let i = 0; i <= this.length; i++) {
+    accumulator = reducer(accumulator, i);
+  }
+  return accumulator;
+};
 
 let result = numsSequence.myReduce((sum, current) => sum + current, 0);
 console.log("myReduce function result: ", result);

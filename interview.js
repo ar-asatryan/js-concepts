@@ -83,7 +83,7 @@ mySetTimeout(() => {
 }, 5000);
 
 //
-// ToDo 4.2 -> mySetTimeOut via Promise ->
+// ToDo 4.2 -> mySetTimeOut via Promise (N2) ->
 
 function mySetTimeout2(cb,time){
     const pr = new Promise((res)=>{
@@ -133,7 +133,7 @@ mySetInterval2(() => { console.log("logging every second v2!")}, 1000);
 // ToDo: Գրել Ֆունկցիա որը կանչելով հետևյալ կերպ կվերադարձնի նոր array`
 //  որը կունենա element-ները նշված type-ով:
 
-const arr = ["Levon", "Ararat", 15, 16, true, false];
+const arr = ["Zhirayr", "Ararat", 15, 16, true, false];
 const arr1 = ["HH","BB","KK","OO","LL"];
 
 //arr.getArrayByElementTypes("boolean");
@@ -158,7 +158,7 @@ console.log(newArray);
 
 //const arr1 = ["HH","BB","KK","OO","LL"];
 
-// arr1.insertArrayByStep(["Levon","Ararat"],2);
+// arr1.insertArrayByStep(["Zhirayr","Ararat"],2);
 //Ստանում ենք
 // let finArr  =  ["HH","BB","Levon","KK","OO","Ararat","LL"];
 
