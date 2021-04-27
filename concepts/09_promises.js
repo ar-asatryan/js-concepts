@@ -61,11 +61,11 @@ class CustomPromise {
 const promises = [];
 
 const myPromise1 = new CustomPromise(function (resolve, reject) {
-  setTimeout(() => resolve("done"), 2000);
+  setTimeout(() => resolve("done-pr1"), 2000);
 });
 
 const myPromise2 = new CustomPromise((res, rej) => {
-  setTimeout(() => res("done2"), 2000);
+  setTimeout(() => res("done-pr2"), 4000);
 });
 
 promises.push(myPromise1, myPromise2);
