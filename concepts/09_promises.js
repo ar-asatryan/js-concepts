@@ -17,22 +17,24 @@ class CustomPromise {
       this.catchArray.forEach((cb) => cb(this.value));
     };
 
-    setImmediate(() => exec(resolve, reject));
+    process.nextTick(() => exec(resolve, reject));
   }
 
   then(callback) {
-    if (this.status === "fulfilled") {
-      callback(this.value);
-    } else if (this.status === "pending") {
-      this.thenArray.push(callback);
+    switch (this.status) {
+      case "fulfilled":
+        callback(this.value);
+      case "pending":
+        this.thenArray.push(callback);
     }
   }
 
   catch(callback) {
-    if (this.status === "rejected") {
-      callback(this.value);
-    } else if (this.status === "pending") {
-      this.catchArray.push(callback);
+    switch (this.value) {
+      case "rejected":
+        callback(this.value);
+      case "pending":
+        this.catchArray.push(callback);
     }
   }
 }
@@ -55,8 +57,6 @@ class CustomPromise {
 // });
 
 // console.log(2);
-
-//
 
 const promises = [];
 
