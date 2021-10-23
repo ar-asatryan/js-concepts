@@ -1,4 +1,4 @@
-// ToDo: 1.
+// TODO: 1.
 
 let redisObj = {
     data1: {
@@ -29,7 +29,7 @@ getRedis(() => {
 }, 1000);
 
 
-// ToDo: 2. Via Callback>>
+// TODO: 2. Via Callback>>
 
 //console.log(redisObj.data);
 
@@ -50,7 +50,7 @@ function logData (value) {
 getDataFromRedis(data, logData);
 logData(data);
 
-// ToDo: 3. Via Promise>>
+// TODO: 3. Via Promise>>
 
 const redisObj = {
     data1: 'redis_data1',
@@ -79,7 +79,7 @@ function logData(value) {
 
 getRedisData(logData, a);
 
-// ToDo: 4. via Async/Await
+// TODO: 4. via Async/Await
 
 
 const redisObj = {

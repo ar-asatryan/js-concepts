@@ -1,3 +1,4 @@
+//
 // Promise
 class CustomPromise {
   constructor(exec) {
@@ -72,3 +73,6 @@ promises.push(myPromise1, myPromise2);
 Promise.all(promises).then((result) => {
   console.log(result);
 });
+
+//
+// Promise.race()

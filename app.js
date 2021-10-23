@@ -14,7 +14,7 @@ const users = [
 const companies = [
   { id: 1, company: "Google", category: "Software", start: 1994, end: 2004 },
   { id: 2, company: "Synopsys", category: "Hardware", start: 2004, end: 2020 },
-  { id: 3, company: "Cisco", category: "Hardware", start: 2011, end: 2019 },
+  { id: 3, company: "Epam", category: "Software", start: 1997, end: 2021 },
   { id: 4, company: "Netflix", category: "Media", start: 2014, end: 2021 },
   { id: 5, company: "Marvel", category: "Comics", start: 2008, end: 2019 },
 ];
@@ -28,6 +28,15 @@ const usersMap = users.map( u => ({
 }) );
 
 console.log("usersMap", usersMap);
+
+Array.prototype.myMapSimple = function(callback) {
+  const resultArray = [];
+  for(let i = 0; i < this.length; i++) {
+    resultArray.push(callback(this[i]));
+  }
+  return resultArray;
+}
+
 
 // implementing myMap method using JavaScript .reduce()>>
 Array.prototype.myMap = function(callback) {
@@ -44,3 +53,5 @@ const myUsersMap = users.myMap( user => ({
 }));
 
 console.log("myUsersMap:", myUsersMap);
+
+//

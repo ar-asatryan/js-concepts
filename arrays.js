@@ -1,6 +1,7 @@
 const arrNums = [13, 2, 78, 0, -7, 59, 65];
 const numsSequence = [1, 2, 3, 4, 5];
 const companyNames = ["Google", "Synopsys", "Cisco", "Netflix", "Marvel"];
+const YEAR_LIMITATION_VALUE = 2011;
 
 const users = [
   { id: 1, name: "tony", surname: "stark", age: 45, cool: true },
@@ -31,11 +32,11 @@ console.log("modified companies", companies);
 
 const specUser = users.find((u) => u.id > 1);
 const myUsers = users.map((h) => h.name);
-const filteredUsers = users.filter((h) => h.id > 1);
+const filteredUsersTest = users.filter((h) => h.id > 1);
 
 console.log("find-->", specUser);
 console.log("map-->", myUsers);
-console.log("filter-->", filteredUsers);
+console.log("filter-->", filteredUsersTest);
 
 const usersMap = users.map((user) => ({
   id: user.id,
@@ -62,39 +63,52 @@ console.log("every method test", isEveryTest);
 // // // implementation of JavaScript Array methods:
 
 //
+// implementing myForEach method>>
+Array.prototype.myForEach = function (callback) {
+  for (let i = 0; i < this.length; i++) {
+    callback(this[i], i, this);
+  }
+};
+users.myForEach((user) => console.log(user));
+
+//
 // implementing myMap method using JavaScript .reduce() and .push()>>
 Array.prototype.myMapTest = function (callback) {
-  var arr = [];
+  const mappedArray = [];
   for (let i = 0; i < this.length; i++) {
-    arr.push(callback(this[i]));
+    mappedArray.push(callback(this[i]));
   }
-  return arr;
+  return mappedArray;
 };
 
-Array.prototype.myMap = function (callback) {
+Array.prototype.customMap = function (callback) {
   const initialArray = [];
   const mapReducer = (mappedArray, currentItem) =>
     mappedArray.concat(callback(currentItem));
   return this.reduce(mapReducer, initialArray);
 };
 
-const usersMapFullname = users.myMap((user) => ({
+const usersMapFullname = users.customMap((user) => ({
   id: user.id,
   age: user.age,
   fullname: `${user.name} ${user.surname}`,
 }));
 
-const myUsersMap = users.myMap((user) => ({
-  id: user.id,
-  fullname: `${user.name} ${user.surname}`,
-  age: user.age,
-}));
 
 console.log("mapped users: ", usersMapFullname);
-console.log("myUsersMap: ", myUsersMap);
 
 //
-// implementing myFilter method using JavaScript .reduce()>>
+// implementing myFilter method using JavaScript .reduce()and .push()>>
+
+Array.prototype.myFilterTest = function (callback) {
+  const resultArr = [];
+  for (let i = 0; i < this.length; i++) {
+    if (callback(this[i])) {
+      resultArr.push(this[i]);
+    }
+  }
+};
+
 Array.prototype.myFilter = function (callback) {
   const initialArray = [];
   const filterReducer = (filteredArray, currentItem) => {
@@ -129,5 +143,21 @@ Array.prototype.myReduce = function (reducer, accumulator) {
   return accumulator;
 };
 
+Array.prototype.myMap = function (callback) {
+    const initArray = [];
+    const mapReducer = (mappedArray, currentItem) => 
+      mappedArray.concat(callback(currentItem));
+    return this.reduce(mapReducer, initArray);
+}
+
+const usersMapFullname2 = users.myMap((user) => ({
+  id: user.id,
+  age: user.age,
+  fullname: `${user.name} ${user.surname}`,
+}));
+
+console.log("myMap function result>>>>>>>>> ", usersMapFullname2);
+
 let result = numsSequence.myReduce((sum, current) => sum + current, 0);
 console.log("myReduce function result: ", result);
+
