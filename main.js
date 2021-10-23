@@ -1,61 +1,24 @@
-class CustomPromise {
-  constructor(exec) {
-    this.status = "pending";
-    this.thenArray = [];
-    this.catchArray = [];
-    this.value;
+// Promise.race();
+const arr1 = [1, 2, 3 ,4];
+const arr2 = [3, 4, 5, 6];
 
-    const resolve = (value) => {
-      this.status = "fulfilled";
-      this.value = value;
-      this.thenArray.forEach((cb) => cb(this.value));
-    };
-    const reject = (error) => {
-      this.status = "rejected";
-      this.value = error;
-      this.catchArray.forEach((cb) => cb(this.value));
-    };
-
-    setImmediate(() => exec(resolve, reject));
-  }
-
-  then(callback) {
-    if (this.status === "fulfilled") {
-      callback(this.value);
-    } else if (this.status === "pending") {
-      this.thenArray.push(callback);
-    }
-  }
-
-  catch(callback) {
-    if (this.status === "rejected") {
-      callback(this.value);
-    } else if (this.status === "pending") {
-      this.catchArray.push(callback);
-    }
-  }
+let mystic;
+for (let i = 0; i<= arr1.length; i++) {
+    mystic = arr2.includes(arr1[i])
 }
 
-const promises = [];
+const filteredArray = arr1.filter(value => arr2.includes(value));
 
-const myPromise1 = new CustomPromise(function (resolve, reject) {
-  setTimeout(() => resolve("done"), 2000);
-});
+function intersection(num1, num2) {
+    
+}
 
-const myPromise2 = new CustomPromise((res, rej) => {
-    setTimeout( () => res("done2") , 2000 );
-});
+console.log(mystic)
+console.log(filteredArray)
 
-promises.push(myPromise1, myPromise2);
-Promise.all(promises).then( (result) => {
-    console.log(result);
-} ) ;
 
-// myPromise.then(
-//     result => console.log(result)
-// )
-
-const nativePromise = new Promise(function (resolve, reject) {
-  setTimeout(() => resolve("done with Native Promise"), 2000);
-});
-
+for(let i = 0; i < 10; i++) {
+    setTimeout(() => {
+        console.log(i)
+    }, 0);
+}
